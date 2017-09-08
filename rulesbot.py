@@ -1,8 +1,6 @@
 
 # coding: utf-8
 
-# In[100]:
-
 import telebot
 from telebot import types
 import requests
@@ -11,9 +9,7 @@ import logging
 import operator
 
 
-# In[101]:
-
-TOKEN = "375626301:AAEAV5O1NI_Df82yF1RFWkrGOjLVHkTctoI"
+TOKEN = "<BOT-TOKEN>"
 bot = telebot.TeleBot(TOKEN)
 rules_dict = {'rule': None, 'user': None}
 #telebot.logger.setLevel(logging.DEBUG)
@@ -21,7 +17,6 @@ rules_dict = {'rule': None, 'user': None}
 user_dict = {}
 
 
-# In[102]:
 
 class Rules():
     def __init__(self):
@@ -30,7 +25,6 @@ class Rules():
         self.Usuarios = {}
 
 
-# In[103]:
 
 @bot.message_handler(commands=['help', 'start'])
 def send_welcome(message):
@@ -40,7 +34,6 @@ def send_welcome(message):
     user_dict[chat_id] = rules
 
 
-# In[104]:
 
 @bot.message_handler(commands=['newrule'])
 def new_rule(message):
@@ -102,8 +95,6 @@ def remove_rule(message):
     bot.reply_to(message, 'Vale, entendido')
 
 
-# In[105]:
-
 @bot.message_handler(commands=['rules'])
 def getRules(message):
     try:
@@ -121,7 +112,6 @@ def getRules(message):
         bot.send_message(chat_id, 'Please, use /start command before', parse_mode='Markdown')
 
 
-# In[106]:
 
 @bot.message_handler(commands=['rank'])
 def getRank(message):
@@ -138,7 +128,6 @@ def getRank(message):
         bot.send_message(chat_id, 'Please, use /start command before', parse_mode='Markdown')
 
 
-# In[107]:
 
 @bot.message_handler(func=lambda message: True)
 def rules_in_message(message):
@@ -163,17 +152,8 @@ def rules_in_message(message):
         bot.send_message(chat_id, 'Please, use /start command before', parse_mode='Markdown')
 
 
-# In[108]:
-
 bot.polling()
 
-
-# In[ ]:
-
-
-
-
-# In[ ]:
 
 
 
